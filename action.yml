@@ -1,0 +1,35 @@
+name: 'ICS Calendar Validator'
+description: 'Validate ICS/iCalendar files for format compliance and common issues'
+author: 'CalendarMap'
+
+branding:
+  icon: 'calendar'
+  color: 'blue'
+
+inputs:
+  files:
+    description: 'Path to ICS files to validate (supports glob patterns)'
+    required: false
+    default: '**/*.ics'
+  
+  fail-on-error:
+    description: 'Fail the action if validation errors are found'
+    required: false
+    default: 'true'
+  
+  fail-on-warning:
+    description: 'Fail the action if validation warnings are found'
+    required: false
+    default: 'false'
+
+outputs:
+  errors:
+    description: 'Number of validation errors found'
+  warnings:
+    description: 'Number of validation warnings found'
+  report:
+    description: 'Detailed validation report in JSON format'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
